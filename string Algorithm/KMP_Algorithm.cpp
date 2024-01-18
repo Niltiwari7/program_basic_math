@@ -1,3 +1,33 @@
+// Brute Force-:
+// Time Complexity = O(n*m)
+
+// class Solution
+// {
+//     public:
+//         vector <int> search(string pat, string txt)
+//         {
+//             //code hee.
+//             vector<int>result;
+           
+//             for(int i = 0;i<txt.size();i++)
+//             {
+//                  bool flag = true;
+//                 for(int j = 0;j<pat.size();j++){
+//                     if(txt[i+j]!=pat[j]){
+//                         flag = false;
+//                         break;
+//                     }
+//                 }
+//                 if(flag==true)result.push_back(i+1);
+//             }
+//             return result;
+//         }
+     
+// };
+
+// Optimal Solution-: 
+// Time Complexity -: O(n+m)
+//     KMP Algorithm
 class KMP {
 public:
     static std::vector<int> buildPrefixArray(const std::string& pattern) {
