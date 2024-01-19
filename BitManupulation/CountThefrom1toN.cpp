@@ -1,4 +1,6 @@
- typedef long long ll;
+// Count bit from 1 to n in O(1) complexity
+
+typedef long long ll;
     vector<ll> bitCount;
 
     void getBits(ll number) {
