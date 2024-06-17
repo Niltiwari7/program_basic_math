@@ -16,6 +16,10 @@ typedef pair<int, int> pii;
 const int INF = 1e9;
 const ll LINF = 1e18;
 const int MOD = 1e9 + 7;
+int drow[4] = {-1, 1, 0, 0};
+int dcol[4] = {0, 0, -1, 1};
+int dr[8] = {-1, -1, -1, 0, 1, 1, 1, 0}; 
+int dc[8] = {-1, 0, 1, -1, -1, 0, 1, 1}; 
 
 template <typename T> void debug_vector(const vector<T>& v) {
     for (const auto& x : v) {
@@ -32,4 +36,3 @@ template <typename T> void debug_2d_vector(const vector<vector<T>>& v) {
         cout << endl;
     }
 }
-
