@@ -1,5 +1,3 @@
-typedef long long ll;
-
 class SegmentTree {
 public:
     vector<ll> seg;
