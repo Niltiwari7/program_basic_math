@@ -21,14 +21,14 @@ int dcol[4] = {0, 0, -1, 1};
 int dr[8] = {-1, -1, -1, 0, 1, 1, 1, 0}; 
 int dc[8] = {-1, 0, 1, -1, -1, 0, 1, 1}; 
 
-template <typename T> void debug_vector(const vector<T>& v) {
+template <typename T> void debug_1d(const vector<T>& v) {
     for (const auto& x : v) {
         cout << x << " ";
     }
     cout << endl;
 }
 
-template <typename T> void debug_2d_vector(const vector<vector<T>>& v) {
+template <typename T> void debug_2d(const vector<vector<T>>& v) {
     for (const auto& row : v) {
         for (const auto& x : row) {
             cout << x << " ";
