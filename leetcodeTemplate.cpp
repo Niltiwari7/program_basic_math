@@ -2,6 +2,10 @@ typedef long long ll;
 typedef vector<int> vi;
 typedef vector<vector<int>> vvi;
 typedef pair<int, int> pii;
+typedef unordered_map<int, int> uimap;
+typedef unordered_map<char, int> ucmap;
+typedef priority_queue<int, vector<int>, greater<int>> min_pq; // Min-heap
+typedef priority_queue<int> max_pq; // Max-heap
 
 #define fo(i, n) for (int i = 0; i < n; i++)
 #define Fo(i, k, n) for (int i = k; i < n; i++)
@@ -12,6 +16,14 @@ typedef pair<int, int> pii;
 #define fi first
 #define se second
 #define sz(x) (int)x.size()
+#define endl '\n'
+#define fast_io() ios_base::sync_with_stdio(false); cin.tie(NULL)
+#define precision(x) cout << fixed << setprecision(x)
+#define bitcount(x) __builtin_popcount(x) // Number of set bits in an integer
+#define gcd(a, b) __gcd(a, b) // Greatest Common Divisor
+#define lcm(a, b) (a * (b / gcd(a, b))) // Least Common Multiple
+#define sort_asc(v) sort(all(v)) // Sort in ascending order
+#define sort_desc(v) sort(all(v), greater<int>()) // Sort in descending order
 
 const int INF = 1e9;
 const ll LINF = 1e18;
@@ -19,7 +31,7 @@ const int MOD = 1e9 + 7;
 int drow[4] = {-1, 1, 0, 0};
 int dcol[4] = {0, 0, -1, 1};
 int dr[8] = {-1, -1, -1, 0, 1, 1, 1, 0}; 
-int dc[8] = {-1, 0, 1, -1, -1, 0, 1, 1}; 
+int dc[8] = {-1, 0, 1, -1, -1, 0, 1, 1};
 
 template <typename T> void debug_1d(const vector<T>& v) {
     for (const auto& x : v) {
@@ -35,4 +47,17 @@ template <typename T> void debug_2d(const vector<vector<T>>& v) {
         }
         cout << endl;
     }
+}
+
+template <typename T1, typename T2> void debug_map(const unordered_map<T1, T2>& m) {
+    for (const auto& p : m) {
+        cout << p.first << " : " << p.second << endl;
+    }
+}
+
+template <typename T> void debug_set(const unordered_set<T>& s) {
+    for (const auto& x : s) {
+        cout << x << " ";
+    }
+    cout << endl;
 }
