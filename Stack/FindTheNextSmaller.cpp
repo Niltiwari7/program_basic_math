@@ -1,59 +1,61 @@
-// Sum of Subarray Minimums
-
 class Solution {
 public:
-    typedef long long ll;
-
-    vector<int> getNSR(vector<int>& arr, int n) {
+    // THIS WILL GIVE ME NEXT SMALLER ELEMENT FROM RIGHT SIDE
+    vector<int> NextSmallerElementRight(vector<int> nums) {
+        int n = nums.size();
         vector<int> result(n);
         stack<int> st;
         for (int i = n - 1; i >= 0; i--) {
             if (st.empty()) {
                 result[i] = n;
             } else {
-                while (!st.empty() && arr[st.top()] >= arr[i]) {
+                while (!st.empty() && nums[st.top()] >= nums[i]) {
                     st.pop();
                 }
-                result[i] = st.empty() ? n : st.top();
+                if (st.empty()) {
+                    result[i] = n;
+                } else {
+                    result[i] = st.top();
+                }
             }
             st.push(i);
         }
         return result;
     }
 
-    vector<int> getNSL(vector<int>& arr, int n) {
+    // THIS WILL GIVE ME NEXT SMALLER ELEMENT FROM LEFT SIDE
+    vector<int> NextSmallerElementLeft(vector<int> nums) {
+        int n = nums.size();
         vector<int> result(n);
         stack<int> st;
         for (int i = 0; i < n; i++) {
             if (st.empty()) {
                 result[i] = -1;
             } else {
-                while (!st.empty() && arr[st.top()] > arr[i]) {
+                while (!st.empty() && nums[st.top()] >= nums[i]) {
                     st.pop();
                 }
-                result[i] = st.empty() ? -1 : st.top();
+                if (st.empty()) {
+                    result[i] = -1;
+                } else {
+                    result[i] = st.top();
+                }
             }
             st.push(i);
         }
         return result;
     }
 
-    int sumSubarrayMins(vector<int>& arr) {
-        int n = arr.size();
-        vector<int> NSL = getNSL(arr, n);
-        vector<int> NSR = getNSR(arr, n);
-
-        long long sum = 0;
-        int M = 1e9 + 7;
-        for (int i = 0; i < n; i++) {
-            ll ls = i - NSL[i];
-            ll rs = NSR[i] - i;
-
-            ll totalWays = ls * rs;
-
-            ll totalSum = arr[i] * totalWays;
-            sum = (sum + totalSum) % M;
+    int largestRectangleArea(vector<int>& heights) {
+        vector<int> NSR = NextSmallerElementRight(heights);
+        vector<int> NSL = NextSmallerElementLeft(heights);
+        
+        int ans = 0;
+        for (int i = 0; i < heights.size(); i++) {
+            int width = NSR[i] - NSL[i] - 1;
+            int area = width * heights[i];
+            ans = max(ans, area);
         }
-        return static_cast<int>(sum);
+        return ans;
     }
 };
